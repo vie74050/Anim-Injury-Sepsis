@@ -1,0 +1,93 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="author" content="Vienna Ly">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+		<title>Sepsis</title>
+
+		<!-- jquery -->
+		<script src="scripts/libs/jquery.min.js"></script>
+
+		<!-- jquery UI -->
+		<link rel="stylesheet" href="scripts/libs/jquery-ui.min.css" />
+		<script type="text/javascript" src="scripts/libs/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="scripts/libs/jquery-ui-touch-punch.min.js"></script>
+		
+		<link rel="stylesheet" href="scripts/sepsis.css" />	
+	</head>
+	<body>
+		<div id="options">
+			<button id="pp_btn" onclick="playpause(this)">PAUSE</button>
+			
+			<button id="reset_btn" onclick="reset(this);">RESET</button>
+			
+			<button id="injury_btn" onclick="injury(this);">INJURY</button>
+						
+			<br />
+			<button id="ab_btn" class="process_btn" onclick="vasodilation(this);" title="Arachadonic Acid and Bradykinin pathway mediate vasodilation and permeability">A &amp; B</button>
+			<button id="clotting_btn" class="process_btn" onclick="clotting(this)" title="Coagulation Pathway - platelets, fibrin aggregate at site of injury to form mesh clot.">Coagulation</button>
+			<button id="complement_btn" class="process_btn" onclick="complement_cascade(this)" title="Complement">Complement</button>
+			<button id="injury_btn" class="process_btn" onclick="ards(this)">ARDS</button>
+			
+		</div>
+		
+		<div id="stage">
+		
+			<div id="arterywall"></div>
+			<div id="wound"></div>
+		
+			<div class="cell rbc clickable" title="red blood cell: gas exchange"></div>
+			<div class="cell rbc-clot clickable injury" title="blood clot"></div>
+
+			<div class="cell monocyte clickable" title="monocyte: communications, phagosytosis"></div>
+			
+			<div class="cell platelet clickable"  title="platelets"></div>
+			<div id='platelet_factors' class="clickable chemicals injury"  title="chemokines released in response to damage"></div>
+			<div id="platelet_group" class="cell platelet-group clickable injury"  title="platelet adhere to exposed collagen"></div>
+
+			<div id="fibrin" class="fibrin clickable injury"  title="fibrin"></div>
+			<div class="cell platelet-clot clickable injury"  title="platelet adhere to exposed collagen"></div>
+			
+			<div class="cell neutrophil clickable"  title="neutrophil"></div>
+			
+			<div id="splinter"></div>
+			
+			
+			<div id='mastcell' class="clickable" title="mast cell:release factors to mediate vasodilation and constriction upon activation"></div>
+			<div id='mastcell_factors' class="clickable chemicals injury" title="Activated mast cells release histamines to mediate vasodilation"></div>
+
+			<p class='pathogen injury clickable' title="pathogens"></p>
+			<p class='pathogen injury clickable' title="pathogens"></p>
+			<p class='pathogen injury mac clickable animate' title="bacterial cell"></p>
+			
+			<!--p class='pathogen injury' title="pathogens"></p-->
+						
+		</div>
+		<div id="info">
+		<span id="pathway_vaso" class="injury pathway">
+			<img id="arach" src="images/pathway_ArachAcid.png" height="350"/>
+			<img id="kinin" src="images/pathway_brady.png" height="350"/>
+		</span>
+		<span id="pathway_clotting" class="injury pathway">
+			<img id="clot" src="images/pathway_clotting.png" height="300"/>
+			
+		</span>
+		<span id="pathway_complement" class="injury pathway">
+			<img id="complement" src="images/pathway_complement.png" height="220"/>
+			
+		</span>
+		</div>
+
+		<div id="systemic" class="pathway">
+			<video width="100%" controls>
+		 		<source src="images/ZoomToARDS.mp4" type="video/mp4">
+				
+				Your browser does not support HTML5 video.
+			</video>
+
+		</div>
+		<script type="text/javascript" src="scripts/canvasController.js"></script>
+	</body>
+</html>

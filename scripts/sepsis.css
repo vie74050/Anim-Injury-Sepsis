@@ -1,0 +1,352 @@
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('../fonts/fontawesome-webfont.eot?v=4.7.0');
+  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('../fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body, html {
+	box-sizing: border-box;
+	font-family: Helvetica, sans-serif;
+	text-align: center;
+}
+#options {
+	width: 775px;
+	margin: 0 auto;
+}
+
+#stage {
+	width: 775px;
+	height: 500px;
+	margin: 0 auto;
+	background-position: 0px 0px;
+	background-image: url(../images/bg.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+	display: block;
+	position: relative;
+	overflow: hidden;
+}
+#stage.minimize, #info.minimize{
+	transform-origin: center;
+	-ms-transform-origin: center;
+	-webkit-transform-origin: center;
+	transform: scale(.5,.5);
+	-ms-transform: scale(.5,.5);
+	-webkit-transform: scale(.5,.5);
+}
+#systemic {
+	display:none;
+	position: absolute;
+	left: 20px;
+	top: 80px;
+	width: 500px;
+	height: 281px;
+	overflow:hidden;
+	box-shadow: 5px 5px 25px rgba(0,0,0,0.5);
+	padding: 10px;
+}
+#arterywall {
+	position: absolute;
+	left: 0px;
+	top: 200px;
+	width: 775px;
+	height: 233px;
+	background-image: url(../images/arterwall.png);
+	background-repeat: no-repeat;
+	background-position: -774px bottom;
+	pointer-events: none;
+}
+@keyframes arterywallConstrict{
+100% {background-position:0px bottom};
+}
+
+#arterywall.arterywallConstrict {
+	background-position: 0px bottom;
+}
+@keyframes arterywallDilate{
+0% {background-position: 0px bottom}
+100% {background-position: -3096px bottom};
+}
+
+#arterywall.arterywallDilate {
+
+	animation: arterywallDilate 2s steps(4) 1;
+	animation-fill-mode: forwards;
+}
+
+#splinter {
+	display: none;
+	position: absolute;
+	left: 280px;
+	width: 80px;
+	height: 240px;
+	background-image: url(../images/splinter.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+	top: 17px;
+}
+
+#wound {
+	position: absolute;
+	display: none;
+	left: 95px;
+	top: 17px;
+	width: 520px;
+	height: 295px;
+	background-image: url(../images/wound.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	pointer-events: none;
+}
+#mastcell {
+	position: absolute;
+	opacity: .1;
+	left: 190px;
+	top: 90px;
+	width: 54px;
+	height: 50px;
+	background-image: url(../images/mastcell.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+#fibrin {
+	position: absolute;
+	left: 270px;
+	top: 203px;
+	width: 110px;
+	height: 110px;
+	background-image: url(../images/bloodclot.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+
+#mastcell_factors {
+	left: 115px;
+	top: 23px;
+	background-image: url(../images/histamines.png);
+	-webkit-animation: pulsate 3s ease-out;
+	-webkit-animation-iteration-count: infinite;
+	border: 1px solid #337ab7;
+	border-radius: 50%;
+}
+#platelet_group{
+	position: absolute;
+	left: 270px;
+	top: 225px;
+	width: 110px;
+	height: 110px;
+	background-image: url(../images/platelet_group.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+#platelet_factors {
+	left: 230px;
+	top: 200px;
+	background-image: url(../images/chemicals.png);
+	-webkit-animation: pulsate 4s ease-out;
+	-webkit-animation-iteration-count: infinite;
+	border: 1px solid #ccbb11;
+	border-radius: 50%;
+}
+
+.chemicals {
+	position: absolute;
+	display: none;
+	width: 200px;
+	height: 200px;
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+
+@-webkit-keyframes pulsate {
+0% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
+20% {opacity: 1.0;}
+80% {-webkit-transform: scale(1.2, 1.2);}
+100% {-webkit-transform: scale(1.2, 1.2); opacity: 0.0;}
+}
+
+.pathogen {
+	position: absolute;
+	background-image: url(../images/pathogen.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+	width: 50px;
+	height: 50px;
+	left: 330px;
+	top: 198px;
+}
+.pathogen:not(.mac).active{
+	background-image: url(../images/pathogen_active.png);
+}
+/* specify end points for pathogen placement on stage */
+.pathogen:nth-of-type(1) {
+	left: 496px;
+	top: 21px;
+}
+.pathogen:nth-of-type(2) {
+	left: 612px;
+	top: 60px;
+}
+
+/* MAC complex */
+.mac{
+	background-image: url(../images/MAC_formation.png);
+	width: 340px;
+    height: 336px;
+    background-position: -0 0;
+	left: 630px;
+	top: 110px;
+	-ms-transform: scale(.2, .2); /* IE 9 */
+    -webkit-transform: scale(.2, .2); /* Safari */
+    transform: scale(.2, .2);
+    -ms-transform-origin: 0% 0%;
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+    cursor:pointer;
+}
+.mac.animate.large{
+	background-color: #fff;
+	z-index: 999;
+	-ms-transform: scale(1, 1); /* IE 9 */
+    -webkit-transform: scale(1, 1); /* Safari */
+    transform: scale(1, 1);
+    box-shadow: 5px 5px 25px rgba(0,0,0,0.5);
+	box-sizing: border-box;
+}
+@keyframes macattack{
+	0% {background-position: 0px 0}
+	100% {background-position: -3060px 0};
+}
+
+.mac.animate{
+	animation: macattack 18s steps(9) infinite;
+	animation-fill-mode: forwards;
+	cursor: help;
+	border: 5px solid #33A9E1;
+	background-color: rgba(255,255,255,0.2);
+}
+.mac.animate.large{
+	border: 0px solid blue;
+	background-color: rgba(255,255,255,.9);
+}
+.mac.animate.large:before{
+	content: "x";
+	float: right;
+	padding: .3em .5em;
+	background-color: #eee;
+}
+.cell {
+	position: absolute;
+	left: -60px;
+	top: 280px;
+	background-position: 0px 0px;
+	background-repeat: no-repeat;
+	background-position: left center;
+	display: block;
+	opacity: .7;
+}
+.ui-tooltip {
+	font-size: .8em;
+	background-color: white;
+	color: #333;
+}
+.monocyte {
+	width: 60px;
+	height: 55px;
+	background-image: url(../images/monocyte.png);
+}
+.monocyte.active {
+	width: 65px;
+	height: 60px;
+	background-image: url(../images/macrophage.png);
+}
+.rbc, .rbc-clot {
+	width: 45px;
+	height: 40px;
+	background-image: url(../images/rbc.png);
+}
+.neutrophil {
+	width: 58px;
+	height: 60px;
+	background-image: url(../images/neutrophil.png);
+}
+.neutrophil.active{
+	background-image: url(../images/neutrophil1.png);
+}
+.platelet, .platelet-clot {
+	width: 47px;
+	height: 29px;
+	background-image: url(../images/platelet.png);
+}
+.pathway img {
+	
+}
+.pathway #arach{
+	left: 328px;
+	top: -490px;	
+}
+.pathway #kinin{
+	left: -539px;
+	top: -485px;
+
+}
+.pathway #clot{
+	left: -250px;
+	top: -453px;
+}
+.pathway #complement{
+	left: 37px;
+	top: -491px;
+}
+button {
+	font-size: 1.1em;
+}
+.clickable {
+	cursor: pointer;
+}
+.clickable:hover {
+	box-shadow: 0 0 6px rgba(35, 173, 278, 1);
+}
+
+.ui-draggable-handle{
+	cursor:move;
+}
+/* colours */
+
+.yellow{
+	background-color: #ccbb11;
+	color: #fff;
+}
+button.process_btn[disabled="disabled"] {
+	background-color: #888; 
+	color: #aaa;
+}
+button.process_btn:not([disabled="disabled"]){
+	background-color: #eadc75; 
+	position: relative;
+	padding-right: 1.4em;
+}
+button.process_btn.blue:not([disabled="disabled"]){
+	background-color: #337ab7;
+	color: #fff;
+}
+button.process_btn:after{
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: .7em;
+	position: absolute;
+	top: 0px;
+	right: 0;
+	background-color: rgba(255,255,255,0.7);
+	padding: 3px;
+	width: 1em;
+	text-align: center;
+	color: #333;
+}
+button.process_btn:not([disabled="disabled"]):after{
+	content: "\f070";
+}
+button.process_btn.blue:after{
+	content: "\f06e";	
+}
